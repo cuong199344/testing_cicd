@@ -1,0 +1,37 @@
+name: Test All service
+
+on: 
+  push:
+    branches:
+      - dev
+
+
+jobs:
+  testCompany:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get Code
+        uses: actions/checkout@v3
+      - name: Test company
+        run: | 
+          cd company
+          npm install
+          npm run test
+  testUser:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get Code
+        uses: actions/checkout@v3
+      - name: Test user
+        run: | 
+          cd user
+          npm install
+          npm run test
+  checkQuantity:
+    runs-on: ubuntu-latest
+    needs: [testCompany, testUser]
+    steps:
+      - name: Get Code
+        uses: actions/checkout@v3
+      - name: Check quality
+        run: echo "SonarCloud"
