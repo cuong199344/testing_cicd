@@ -1,0 +1,15 @@
+name: tests
+
+on: pull_request
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get Code
+        uses: actions/checkout@v3
+      - name: Test user
+        run: | 
+          cd user
+          npm install
+          npm run test
