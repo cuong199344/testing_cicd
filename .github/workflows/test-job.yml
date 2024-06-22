@@ -1,0 +1,16 @@
+name: Test Job
+
+on: 
+  pull_request:
+    paths:
+    - 'job/**'
+
+
+jobs:
+  checkQuantity:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get Code
+        uses: actions/checkout@v3
+      - name: Check quality
+        run: echo "SonarCloud"
